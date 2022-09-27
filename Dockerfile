@@ -9,7 +9,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 # define default env variables
 ENV PORT 27015
-ENV MAP de_dust2
+ENV MAP fy_pool_day
 ENV MAXPLAYERS 16
 ENV SV_LAN 0
 
