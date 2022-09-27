@@ -36,6 +36,9 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir /hlds +app_update 90 valid
 WORKDIR /root/.steam
 RUN ln -s ../Steam/linux32 sdk32
 
+# add maps
+ADD maps/* /hlds/cstrike/maps/
+
 # start server
 WORKDIR /hlds
 ENTRYPOINT ./hlds_run -game cstrike -strictportbind -ip 0.0.0.0 -port $PORT +sv_lan $SV_LAN +map $MAP -maxplayers $MAXPLAYERS
