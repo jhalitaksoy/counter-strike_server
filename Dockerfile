@@ -39,6 +39,10 @@ RUN ln -s ../Steam/linux32 sdk32
 # add maps
 ADD maps/* /hlds/cstrike/maps/
 
+# Enable bots
+# https://github.com/Arkshine/CSBotEnabler
+ADD bot_enabler/* /hlds/cstrike/
+
 # start server
 WORKDIR /hlds
 ENTRYPOINT ./hlds_run -game cstrike -strictportbind -ip 0.0.0.0 -port $PORT +sv_lan $SV_LAN +map $MAP -maxplayers $MAXPLAYERS
