@@ -39,9 +39,15 @@ RUN ln -s ../Steam/linux32 sdk32
 # add maps
 ADD maps/* /hlds/cstrike/maps/
 
+# Install Metamod http://metamod.org
+ADD metamod/ /hlds/cstrike/
+
+RUN sed -i -e 's/gamedll "dlls\\mp.dll"/gamedll "addons\\metamod\\dlls\\metamod.dll"/g' /hlds/cstrike/liblist.gam
+RUN sed -i -e 's/gamedll_linux "dlls\/cs.so"/gamedll_linux "addons\/metamod\/dlls\/metamod_i386.so"/g' /hlds/cstrike/liblist.gam
+
 # Enable bots
 # https://github.com/Arkshine/CSBotEnabler
-ADD bot_enabler/* /hlds/cstrike/
+ADD bot_enabler/ /hlds/cstrike/
 
 # start server
 WORKDIR /hlds
